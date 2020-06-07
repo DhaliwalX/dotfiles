@@ -98,25 +98,28 @@ There are two things you can do about this warning:
 
 (global-linum-mode 1)
 
+(global-set-key
+ (kbd "C-c C-M-c") 'mc/edit-lines)
+(global-set-key
+ (kbd "C-M-n") 'mc/mark-next-like-this-symbol)
+(global-set-key
+ (kbd "C-M-p") 'mc/mark-previous-like-this-symbol)
 
 (global-set-key
- (kbd "C-c m c") 'mc/edit-lines)
+ (kbd "C-M-a") 'mc/mark-all-like-this)
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-;; (tool-bar-mode)
-
-;; removes menu bar from emacs window
 (elpy-enable)
 
 (require 'linum)
-
 (global-linum-mode t)
 
 ;; add additional space after line number column
 (setq linum-format "%d ")
 
+;; setup llvm development
 (if (file-directory-p "~/source/repos/llvm-project")
     (progn
         (setq load-path
@@ -133,7 +136,7 @@ There are two things you can do about this warning:
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (put 'scroll-left 'disabled nil)
 
-;; setup powerline
+;; setup spaceline
 (require 'spaceline)
 (if (window-system) (spaceline-all-the-icons-theme)
   (spaceline-spacemacs-theme))
